@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amanohashidate Itinerary — Japan Sakura Season 2026 · Mar 23 – Apr 3</title>
+<style>
+  :root {
+    --sakura: #f9a8c9;
+    --sakura-dark: #e8739a;
+    --navy: #1a1f3a;
+    --navy-light: #252d52;
+    --gold: #d4a843;
+    --green: #4a7c59;
+    --text: #2c2c2c;
+    --text-light: #666;
+    --bg: #fafaf8;
+    --card: #ffffff;
+    --border: #e8e3dc;
+    --tokyo: #3b82f6;
+    --kyoto: #dc2626;
+    --osaka: #ea580c;
+    --fuji: #7c3aed;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 48px 32px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '🌸';
+    position: absolute; font-size: 120px; opacity: 0.06; top: -20px; left: -20px;
+  }
+  header::after {
+    content: '🗻';
+    position: absolute; font-size: 120px; opacity: 0.06; bottom: -20px; right: -20px;
+  }
+  header h1 { font-size: 2.4em; font-weight: normal; letter-spacing: 2px; color: var(--sakura); }
+  header .subtitle { color: #aab4d4; font-size: 1.1em; margin-top: 8px; letter-spacing: 1px; }
+  header .meta { display: flex; justify-content: center; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
+  header .meta span { background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; font-size: 0.9em; color: #ccd6f6; }
+
+  /* NAV */
+  nav {
+    background: white;
+    border-bottom: 2px solid var(--border);
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav a {
+    display: inline-block;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.82em;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    font-family: sans-serif;
+    transition: all 0.2s;
+  }
+  nav a:hover { color: var(--navy); border-bottom-color: var(--sakura-dark); }
+  nav a.tokyo { border-bottom-color: var(--tokyo); color: var(--tokyo); }
+  nav a.kyoto { border-bottom-color: var(--kyoto); color: var(--kyoto); }
+  nav a.osaka { border-bottom-color: var(--osaka); color: var(--osaka); }
+  nav a.fuji  { border-bottom-color: var(--fuji); color: var(--fuji); }
+
+  /* MAIN */
+  main { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* SECTION HEADERS */
+  .region-header {
+    display: flex; align-items: center; gap: 16px;
+    margin: 48px 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--border);
+  }
+  .region-header .badge {
+    padding: 4px 14px; border-radius: 20px; color: white; font-size: 0.85em;
+    font-family: sans-serif; font-weight: 600; white-space: nowrap;
+  }
+  .region-header h2 { font-size: 1.6em; font-weight: normal; color: var(--navy); }
+  .region-header .nights { color: var(--text-light); font-family: sans-serif; font-size: 0.9em; margin-left: auto; }
+
+  /* DAY CARD */
+  .day {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .day-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-number {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-family: sans-serif; font-weight: 700; font-size: 0.95em;
+    flex-shrink: 0;
+  }
+  .day-header h3 { font-size: 1.1em; font-weight: normal; color: var(--navy); flex: 1; }
+  .day-header .date { font-family: sans-serif; font-size: 0.85em; color: var(--text-light); }
+  .day-header .chevron { color: var(--text-light); font-size: 0.9em; transition: transform 0.2s; }
+  .day.open .chevron { transform: rotate(180deg); }
+  .day-body { padding: 20px 24px 24px; display: none; }
+  .day.open .day-body { display: block; }
+
+  /* TIMELINE */
+  .timeline { list-style: none; position: relative; padding-left: 24px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
+    width: 2px; background: var(--border);
+  }
+  .timeline li { position: relative; margin-bottom: 18px; }
+  .timeline li::before {
+    content: ''; position: absolute; left: -20px; top: 7px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--sakura-dark); border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--sakura-dark);
+  }
+  .timeline li.alert::before { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .time { font-family: sans-serif; font-size: 0.8em; color: var(--text-light); font-weight: 600; margin-bottom: 2px; }
+  .timeline li strong { color: var(--navy); }
+
+  /* TRAIN PILL */
+  .train {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #f0f4ff; border: 1px solid #c7d2fe;
+    color: #3730a3; padding: 3px 10px; border-radius: 12px;
+    font-family: sans-serif; font-size: 0.8em; font-weight: 500; margin: 4px 2px 4px 0;
+  }
+  .train::before { content: '🚆'; font-size: 0.9em; }
+
+  /* BUS PILL */
+  .bus {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fefce8; border: 1px solid #fde68a;
+    color: #92400e; padding: 3px 10px; border-radius: 12px;
+    font-family: sans-serif; font-size: 0.8em; font-weight: 500; margin: 4px 2px 4px 0;
+  }
+  .bus::before { content: '🚌'; font-size: 0.9em; }
+
+  /* REEL LINK */
+  a.reel {
+    display: inline-flex; align-items: center; gap: 5px;
+    color: var(--sakura-dark); text-decoration: none;
+    font-family: sans-serif; font-size: 0.78em; font-weight: 600;
+    background: #fff0f5; border: 1px solid #fecdd3;
+    padding: 2px 8px; border-radius: 10px; margin: 2px;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  a.reel:hover { background: #ffe4eb; }
+  a.reel::before { content: '▶'; font-size: 0.7em; }
+
+  /* CALLOUT */
+  .callout {
+    background: #fffbeb; border-left: 4px solid var(--gold);
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0;
+    font-size: 0.92em;
+  }
+  .callout.warn { background: #fff1f2; border-color: var(--sakura-dark); }
+  .callout.tip { background: #f0fdf4; border-color: var(--green); }
+
+  /* PHOTO SPOT */
+  .photo-spot {
+    background: #f0fdf4; border-left: 4px solid #059669;
+    padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0;
+    font-size: 0.88em;
+  }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 0.85em; }
+  th { background: var(--navy); color: white; padding: 10px 12px; text-align: left; font-weight: 500; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: #f8f9ff; }
+  td .yen { color: var(--text-light); }
+  td .usd { color: var(--green); font-weight: 600; }
+
+  /* PRE-TRIP */
+  .pretip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+  .pretip-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px;
+  }
+  .pretip-card h4 { font-family: sans-serif; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin-bottom: 8px; }
+  .pretip-card ul { padding-left: 16px; font-size: 0.9em; }
+  .pretip-card li { margin-bottom: 4px; }
+  .my-tip { display: inline-block; background: #f0fdf4; border: 1px solid #86efac; color: #166534; font-family: sans-serif; font-size: 0.75em; padding: 1px 7px; border-radius: 8px; margin-left: 4px; font-weight: 600; vertical-align: middle; }
+  .my-tip::before { content: '★ '; }
+
+  /* REFERENCE TABLES SECTION */
+  .ref-section { margin-top: 48px; }
+  .ref-section h2 { font-size: 1.3em; color: var(--navy); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+
+  /* PRINT BUTTON */
+  .print-btn {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--navy); color: white;
+    border: none; padding: 12px 20px; border-radius: 28px;
+    font-family: sans-serif; font-size: 0.9em; cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    z-index: 200;
+    transition: background 0.2s;
+  }
+  .print-btn:hover { background: var(--sakura-dark); }
+
+  /* FOOTER LEGEND */
+  .footer-legend {
+    text-align: center; padding: 32px 24px 16px;
+    font-family: sans-serif; font-size: 0.8em; color: var(--text-light);
+    border-top: 1px solid var(--border); margin-top: 40px;
+  }
+
+  /* PRINT */
+  @media print {
+    .print-btn, nav { display: none !important; }
+    .day-body { display: block !important; }
+    .day { box-shadow: none; page-break-inside: avoid; }
+    header { background: #1a1f3a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { font-size: 12px; }
+    main { padding: 0; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.7em; }
+    .region-header h2 { font-size: 1.3em; }
+    .day-header { padding: 12px 16px; }
+    .day-body { padding: 14px 16px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌸 Japan — Sakura Season 2026</h1>
+  <div class="subtitle">March 23 – April 3 &nbsp;·&nbsp; 12 Days &nbsp;·&nbsp; Tokyo &nbsp;·&nbsp; Kyoto &nbsp;·&nbsp; Fuji</div>
+  <div class="meta">
+    <span>✈️ Arrive HND Mar 23 · 5PM</span>
+    <span>✈️ Depart HND Apr 3 · 5:45PM</span>
+    <span>🌸 Peak Sakura Window</span>
+    <span>💴 ¥147 = $1 USD</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#pretour">Pre-Trip Tips</a>
+  <a href="#tokyo" class="tokyo">Tokyo · Days 1–3</a>
+  <a href="#kyoto" class="kyoto">Kyoto · Days 4–9</a>
+  <a href="#back-tokyo" class="tokyo">Back to Tokyo · Days 10–11</a>
+  <a href="#departure">Departure · Day 12</a>
+  <a href="#trains">Trains &amp; Costs</a>
+  <a href="#timing">Sakura Guide</a>
+</nav>
+
+<main>
+
+<!-- ===================== PRE-TRIP ===================== -->
+<section id="pretour">
+  <div class="region-header">
+    <span class="badge" style="background:#64748b">PRE-TRIP</span>
+    <h2>Before You Leave</h2>
+    <span class="nights">Do these before you land</span>
+  </div>
+
+  <div class="pretip-grid">
+
+    <div class="pretip-card">
+      <h4>Book Ahead — These Fill Up</h4>
+      <ul>
+        <li><strong>Mameshiba Cafe Asakusa</strong> — sells out weeks ahead</li>
+        <li><strong>Kichikichi Omurice Kyoto</strong> — opens 1 month prior, fills in minutes. Set a reminder for Feb 26.</li>
+        <li><strong>Bar Centifolia Tokyo</strong> — email reservation, max 2 seatings/night</li>
+        <li><strong>Chidorigafuchi rowboats</strong> — Parks Foundation website</li>
+        <li><strong>Fushimi Inari dawn</strong> — no booking needed, just set alarm for 5:30AM</li>
+      </ul>
+    </div>
+
+    <div class="pretip-card">
+      <h4>Before You Land</h4>
+      <ul>
+        <li><strong>IC Suica</strong> loaded on iPhone/Apple Watch — set up at home</li>
+        <li><strong>JR Pass 14-day</strong> ¥50,000 (<span style="color:var(--green)">$340</span>) — covers all Shinkansen on this itinerary</li>
+        <li><strong>eSIM</strong> (IIJmio recommended) or pocket WiFi</li>
+        <li><strong>Apps:</strong> Google Maps offline, HyperDia, Tabelog, Google Translate (camera mode) <a class="reel" href="https://www.instagram.com/reel/DU3D-cXkl2D/" target="_blank">apps reel</a></li>
+        <li>Download <strong>Fujisan Webcam app</strong> — check Fuji visibility the night before Day 11 <span class="my-tip">must do</span></li>
+        <li><a class="reel" href="https://www.instagram.com/reel/C4-dgV9talH/" target="_blank">Tokyo money saving tips</a></li>
+      </ul>
+    </div>
+
+    <div class="pretip-card">
+      <h4>Pack These</h4>
+      <ul>
+        <li>Digestion supplements — konbini sells them too <a class="reel" href="https://www.instagram.com/reel/DOyAws0k3Mf/" target="_blank">reel</a></li>
+        <li>Foot relief sheets + compression socks <a class="reel" href="https://www.instagram.com/reel/DVSMMjKDz16/" target="_blank">reel</a></li>
+        <li>Portable umbrella — sakura season = rain</li>
+        <li>Coin purse — Japan is heavily cash. Keep ¥20,000 on you at all times.</li>
+        <li>Comfortable shoes — you'll walk 15,000–25,000 steps daily</li>
+      </ul>
+    </div>
+
+    <div class="pretip-card">
+      <h4>Luggage Delivery (Takkyubin)</h4>
+      <ul>
+        <li>Use <strong>Yamato Transport / Kuroneko</strong> (黒猫) to ship bags city-to-city</li>
+        <li>¥1,000–1,500 per bag (<span style="color:var(--green)">$6.80–10.20</span>), bags arrive by 6PM same day</li>
+        <li>Arrange at hotel front desk the <em>evening before</em> travel day</li>
+        <li><a class="reel" href="https://www.instagram.com/reel/DBJQvd5hpUm/" target="_blank">luggage delivery reel</a></li>
+        <li>Do this Tokyo→Kyoto on Day 3 night and Kyoto→Tokyo on Day 9 night. Non-negotiable. Travel with a daypack only. <span class="my-tip">game changer</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== TOKYO ===================== -->
+<section id="tokyo">
+  <div class="region-header">
+    <span class="badge" style="background:var(--tokyo)">TOKYO</span>
+    <h2>Tokyo — 3 Nights</h2>
+    <span class="nights">Mar 23–25 · Sakura building toward peak</span>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day open" id="day1">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--tokyo)">1</div>
+      <div>
+        <h3>Arrive Haneda · Recovery · Shinjuku Night</h3>
+        <div class="date">Sunday, March 23</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li>
+          <div class="time">17:00</div>
+          <strong>Land at HND.</strong> Clear immigration (~45 min). Grab bags. IC Suica should already be loaded on phone — if not, get one at airport machines.
+          <a class="reel" href="https://www.instagram.com/reel/DF9Gir-vCzP/" target="_blank">Fuji from plane window</a> — right side seat if routing from west.
+        </li>
+        <li>
+          <div class="time">18:15 — Haneda → Shinjuku Hotel</div>
+          <span class="train">Keikyu Line → Shinagawa 15min ¥330 ($2.25)</span>
+          then <span class="train">Yamanote Line → Shinjuku 20min ¥210 ($1.45)</span>
+          <span style="color:var(--green); font-family:sans-serif; font-size:0.82em; font-weight:700;">← RECOMMENDED</span><br>
+          OR: <span class="train">Tokyo Monorail → Hamamatsucho 15min ¥500 ($3.40)</span> then <span class="train">Yamanote → Shinjuku 20min ¥210 ($1.45)</span>
+          <a class="reel" href="https://www.instagram.com/reel/DV0zruTEc5Y/" target="_blank">train navigation</a>
+          <a class="reel" href="https://www.instagram.com/reel/DS4jIqpASuc/" target="_blank">Yamanote Line guide</a>
+        </li>
+        <li>
+          <div class="time">19:30</div>
+          <strong>Check in. Drop bags.</strong> Send heavy luggage to Kyoto hotel now if you want it gone by Day 4 — arrange at front desk tonight. ¥1,200 ($8.15) per bag.
+          <div class="callout tip">Tonight is easy. You just landed. Don't over-plan. Shinjuku is your base.</div>
+        </li>
+        <li>
+          <div class="time">20:00 — Omoide Yokocho (Memory Lane)</div>
+          <strong>5-min west of Shinjuku Station West Exit.</strong> 30+ tiny yakitori stalls in a narrow alley. Smoky, cash-only, atmospheric. ¥1,500–2,500 for full meal + drinks (<span style="color:var(--green)">$10–17</span>).
+        </li>
+        <li>
+          <div class="time">21:00 — Shinjuku Golden Gai</div>
+          200+ micro bars crammed into 6 alleyways. Each bar fits 6–10 people, ¥500–1,000 cover. Pick one that looks interesting. This is Tokyo's best bar culture. 5-min walk.
+        </li>
+      </ul>
+      <div class="callout">
+        <strong>TRAIN TIP:</strong> Shinjuku is the world's busiest station. Screenshot your exit before you go — West Exit for Golden Gai/Memory Lane, South Exit for most Shinjuku hotels.
+      </div>
+      <div class="photo-spot">📸 <strong>Photo spots today:</strong> Tokyo night skyline · Golden Gai neon alley</div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day open" id="day2">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--tokyo)">2</div>
+      <div>
+        <h3>Asakusa · Mameshiba · Ueno Sakura · Chidorigafuchi Night Sakura</h3>
+        <div class="date">Monday, March 24</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="alert">
+          <div class="time">07:00 — Senso-ji Temple, Asakusa</div>
+          <strong>ARRIVE BEFORE 8AM.</strong> Temple itself always open. The Kaminarimon gate and main hall in early morning mist with zero tourists is extraordinary.
+          <span class="train">Ginza Line → Asakusa ¥210 ($1.45) from Shinjuku via Shibuya</span>
+        </li>
+        <li>
+          <div class="time">08:30 — Nakamise Shopping Street</div>
+          Stalls setting up. Ningyo-yaki (doll-shaped cakes, ¥300/$2), matcha soft cream, sensu fans.
+        </li>
+        <li class="alert">
+          <div class="time">09:30 — Mameshiba Cafe</div>
+          <a class="reel" href="https://www.instagram.com/reel/C2MKDravmBK/" target="_blank">reel</a> <strong>PRE-BOOK REQUIRED.</strong> ¥1,000 cover + food ~¥2,500 total ($17). 60-min sessions with Shiba Inu puppies. One of the most popular cafes in Tokyo.
+          <div class="callout warn">Sells out weeks in advance. If not booked, skip — walk instead to Kappabashi (Kitchen Town).</div>
+        </li>
+        <li>
+          <div class="time">10:30 — Kappabashi Kitchen Town</div>
+          <a class="reel" href="https://www.instagram.com/reel/DP_gSQ6kZ2t/" target="_blank">reel</a> Professional kitchen street. Fake food displays, chef knives, ceramics. Japanese kitchen knife here = best gift from this trip. ¥3,000–15,000 ($20–102). 10-min walk from Asakusa.
+        </li>
+        <li class="alert">
+          <div class="time">12:00 — Ueno Park (SAKURA PEAK)</div>
+          🌸 Late March = full bloom. Walk Sakura-dori (cherry blossom avenue), buy a konbini bento, sit under the trees. This is hanami (flower viewing) culture at its most genuine. <strong>Free.</strong>
+        </li>
+        <li>
+          <div class="time">13:30 — Ueno area</div>
+          Tokyo National Museum ¥1,000 ($6.80) optional, or walk toward Akihabara.
+        </li>
+        <li>
+          <div class="time">14:30 — Akihabara</div>
+          Electronics, anime, capsule toy machines (¥200–500 each). 20-min walk or one JR stop from Ueno.
+        </li>
+        <li class="alert">
+          <div class="time">17:00 — Chidorigafuchi Moat</div>
+          <strong>Best sakura spot in all of Tokyo.</strong> <a class="reel" href="https://www.instagram.com/reel/DUneBrdkvro/" target="_blank">reel</a>
+          <span class="train">Hanzomon Line → Kudanshita ¥220 ($1.50)</span>
+          Cherry blossom tunnels arch over the Imperial Palace moat. Rowboats below. Rowboat rental ¥500/30min ($3.40) — queue up to 1hr. Free bankside walking path also beautiful.
+        </li>
+        <li class="alert">
+          <div class="time">19:30 — Night Sakura (夜桜 Yozakura)</div>
+          <a class="reel" href="https://www.instagram.com/reel/DVvl5ZagS6m/" target="_blank">night sakura reel</a> Chidorigafuchi illuminated until 22:00 during peak bloom. Pink lanterns reflecting on the water + lit sakura tunnels. Arguably more beautiful than daytime.
+          <div class="callout tip">Night sakura is a core part of Japanese hanami culture — do not skip. The photos are stunning.</div>
+        </li>
+        <li>
+          <div class="time">20:30 — Dinner</div>
+          Head to Shinjuku or nearby. <a class="reel" href="https://www.instagram.com/reel/DVpbqQHE0FC/" target="_blank">best Tokyo restaurants</a>
+        </li>
+      </ul>
+      <div class="photo-spot">📸 <strong>Senso-ji Kaminarimon gate at 7AM</strong> (empty) · <strong>Ueno Sakura-dori at noon</strong> · <strong>Chidorigafuchi rowboats at sunset</strong> · <strong>Chidorigafuchi illuminated at night</strong></div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day open" id="day3">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--tokyo)">3</div>
+      <div>
+        <h3>Tokyo Tower Secret View · Ginza · Studio Ghibli · Skytree × Sakura</h3>
+        <div class="date">Tuesday, March 25</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li>
+          <div class="time">07:30 — Breakfast</div>
+          <a class="reel" href="https://www.instagram.com/reel/C7kUbw0vKJF/" target="_blank">affordable Tokyo breakfast spots</a> Three spots under ¥500 ($3.40). Yoshinoya beef rice ¥400, or konbini hot counter.
+        </li>
+        <li class="alert">
+          <div class="time">09:00 — Tokyo Tower Secret Staircase</div>
+          <a class="reel" href="https://www.instagram.com/reel/C50x0EWPxJ5/" target="_blank">reel</a> 📍(35.6571494, 139.7457648). A hidden residential staircase gives a low-angle shot of Tokyo Tower rising above you — FREE, no crowds, discovered by wandering the small streets east of the tower. The best photo of Tokyo Tower that 99% of tourists miss.
+          <span class="train">Mita Line → Onarimon ¥220 ($1.55)</span>
+          <div class="photo-spot">📸 Low angle, shoot upward from the bottom step. Tower fills the entire frame with zero tourists.</div>
+        </li>
+        <li>
+          <div class="time">10:00 — Zojo-ji Temple + Tower</div>
+          Temple gate framing Tokyo Tower behind it = classic shot. Free. 5-min walk.
+        </li>
+        <li>
+          <div class="time">11:00 — Ginza</div>
+          <span class="train">Mita Line → Ginza ¥180 ($1.25)</span><br>
+          → <strong>Uniqlo Ginza:</strong> <a class="reel" href="https://www.instagram.com/reel/DDmAKEJTPih/" target="_blank">reel</a> World's tallest Uniqlo, 12 floors. <a class="reel" href="https://www.instagram.com/reel/C3iFxkavB65/" target="_blank">Japan-exclusive items</a> Budget ¥10,000–20,000 ($68–136).<br>
+          → <strong>Itoya Ginza:</strong> <a class="reel" href="https://www.instagram.com/reel/DTK6H52Er3D/" target="_blank">reel</a> 12-floor stationery paradise. Pencils, notebooks, washi tape. Even if you don't buy, go.<br>
+          → <strong>Mandarin Bar (optional):</strong> <a class="reel" href="https://www.instagram.com/reel/DVjCAUPj89D/" target="_blank">reel</a> Best-value hidden view bar in Tokyo. ¥2,000–3,000 cocktails ($13.60–20.40). Reserve ahead.
+        </li>
+        <li>
+          <div class="time">13:30 — Lunch: Menya Musashi</div>
+          <a class="reel" href="https://www.instagram.com/reel/DT1Cm_AjwPU/" target="_blank">reel</a> Tantanmen ramen, multiple Ginza/Shinjuku locations. ¥1,200 ($8.15).
+        </li>
+        <li>
+          <div class="time">15:00 — Studio Ghibli Free Experience (Nippon TV HQ)</div>
+          <a class="reel" href="https://www.instagram.com/reel/DVKD8Mikiju/" target="_blank">reel</a> Free walk-in. Catbus + Totoro installations in the Minato-ku courtyard. 45 min, very Instagram-able.
+          <span class="train">Yamanote → Shimbashi, walk 10min ¥160 ($1.10)</span>
+        </li>
+        <li class="alert">
+          <div class="time">16:30 — Tokyo Skytree × Cherry Blossoms</div>
+          <a class="reel" href="https://www.instagram.com/reel/DVQXE8dDzaL/" target="_blank">reel</a> Best at golden hour (4:30–5:30PM). Sakura trees surround the base — Skytree + sakura = extraordinary. Deck ¥2,100 ($14.25) OR Sumida Park below (free, better exterior photos).
+          <span class="train">Asakusa Line → Oshiage ¥260 ($1.75)</span>
+        </li>
+        <li>
+          <div class="time">19:00 — Night out</div>
+          <a class="reel" href="https://www.instagram.com/reel/DGvlqRNB1Wd/" target="_blank">full Tokyo night under $20</a> — conveyor belt sushi, standing izakaya, karaoke.
+        </li>
+      </ul>
+      <div class="callout">
+        <strong>OPTIONAL SHIMA ONSEN DETOUR:</strong> If you want the Spirited Away ryokan (Sekizenkan), depart this afternoon. Shinjuku → Nakanojo → bus to Shima Onsen (~3hrs, ¥3,500/$24). Stay overnight ¥20,000–30,000/person inc. dinner+breakfast. Morning Mar 26: Shima Onsen → Takasaki → Shinkansen → Kyoto (~4.5hrs total). <a class="reel" href="https://www.instagram.com/reel/C2aPYQ-oAZr/" target="_blank">Shima Onsen reel</a> You gain an unforgettable onsen night but lose your last Tokyo morning.
+      </div>
+      <div class="callout tip">
+        <strong>TONIGHT:</strong> Arrange luggage delivery to Kyoto at the hotel front desk. ¥1,200/bag ($8.15). Bags will arrive at your Kyoto hotel by 6PM tomorrow. Travel Day 4 with a daypack only.
+      </div>
+      <div class="photo-spot">📸 <strong>Tokyo Tower secret staircase</strong> (low angle, empty) · <strong>Zojo-ji gate + Tower</strong> · <strong>Skytree base + sakura at golden hour</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KYOTO ===================== -->
+<section id="kyoto">
+  <div class="region-header">
+    <span class="badge" style="background:var(--kyoto)">KYOTO</span>
+    <h2>Kyoto — 6 Nights</h2>
+    <span class="nights">Mar 26–31 · Sakura at peak</span>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day open" id="day4">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--kyoto)">4</div>
+      <div>
+        <h3>Tokyo → Kyoto · Nishiki Market · Gion at Dusk · Kichikichi</h3>
+        <div class="date">Wednesday, March 26</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li>
+          <div class="time">08:00 — Send luggage to Kyoto hotel</div>
+          Arrange at hotel front desk last night. ¥1,200/bag ($8.15). Bags arrive by 18:00 in Kyoto. Travel with daypack only.
+          <a class="reel" href="https://www.instagram.com/reel/DBJQvd5hpUm/" target="_blank">luggage delivery reel</a>
+        </li>
+        <li>
+          <div class="time">09:00 — Last Tokyo hour</div>
+          Harajuku Takeshita Street (10min from Shinjuku, quirky fashion), Meiji Shrine (peaceful forest, ¥500/$3.40), or Omotesando window shopping.
+        </li>
+        <li class="alert">
+          <div class="time">10:30 — Depart Tokyo Station</div>
+          <span class="train">Nozomi Shinkansen → Kyoto 2hr 15min ¥13,850 ($94.20) — JR Pass</span>
+          Sit <strong>LEFT side window</strong> — Mt. Fuji appears at ~50min mark going westbound.
+          <div class="callout tip">Pack a bento from the station (Ekiben) — best train food in the world. ¥1,000–1,500 ($6.80–10.20).</div>
+        </li>
+        <li>
+          <div class="time">13:00 — Arrive Kyoto Station</div>
+          Get out fast — the station area is uninteresting.
+          <span class="train">Karasuma Subway Line → Shijo ¥220 ($1.50)</span>
+        </li>
+        <li>
+          <div class="time">14:00 — Nishiki Market (錦市場)</div>
+          "Kyoto's Kitchen." 100+ stalls over 400m. Tamagoyaki on stick ¥200 ($1.35), pickled vegetables, matcha soft cream ¥400 ($2.70). Closes ~18:00. Buy ingredients for a bench picnic.
+        </li>
+        <li class="alert">
+          <div class="time">16:00 — Gion District</div>
+          <a class="reel" href="https://www.instagram.com/reel/DOOMWEWksLr/" target="_blank">Gion reel</a> Walk Hanamikoji from the south end northward. <strong>17:00–19:00 you may spot geiko/maiko</strong> going to evening engagements. Stand aside — do not block or grab. Photography from the street is fine.
+        </li>
+        <li>
+          <div class="time">17:30 — Yasaka Shrine</div>
+          Cherry blossoms in the shrine courtyard. Free. Golden hour light.
+        </li>
+        <li class="alert">
+          <div class="time">19:30 — Kichikichi Omurice</div>
+          <a class="reel" href="https://www.instagram.com/reel/DUrkB0RDYeB/" target="_blank">reel</a>
+          <div class="callout warn"><strong>MUST BOOK IN ADVANCE.</strong> Opens reservations online exactly 1 month prior — fills in minutes. Set a calendar reminder for <strong>February 26</strong>. ¥3,000–4,000/person ($20.40–27.20). Counter seating, watching the chef flip the omurice is half the experience.</div>
+        </li>
+      </ul>
+      <div class="callout warn">
+        <strong>KYOTO TRANSPORT:</strong> Bus 100/101/205 loops all main attractions ¥230/ride or ¥700 day pass ($4.75). IC Suica works on all Kyoto buses. Taxi ¥710 flag fall ($4.85) — use MK Taxi app. Renting a bicycle (¥1,000/day, $6.80) is actually the best way to navigate central Kyoto.
+      </div>
+      <div class="photo-spot">📸 <strong>Hanamikoji cobblestone at dusk</strong> (17:00–18:00) — lanterns + sakura overhead · <strong>Yasaka Shrine torii at golden hour</strong></div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day open" id="day5">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--kyoto)">5</div>
+      <div>
+        <h3>Kinkaku-ji at 9AM · Ryoan-ji · Arashiyama · Tenzan Onsen 🛁</h3>
+        <div class="date">Thursday, March 27</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="alert">
+          <div class="time">08:45 — Bus to Kinkaku-ji</div>
+          <span class="bus">Bus 101 or 205 from Shijo-Karasuma → Kinkakuji-michi 30min ¥230 ($1.55)</span>
+          <strong>ARRIVE AT THE GATE AT 9:00AM.</strong>
+        </li>
+        <li class="alert">
+          <div class="time">09:00 — Kinkaku-ji (Golden Pavilion)</div>
+          ¥500 ($3.40). Open 9AM. The first 20 minutes before tour buses arrive is the only time you'll see the reflection pool without hundreds of people in frame. By 10:30AM it's wall-to-wall.
+          <div class="callout warn"><strong>Kinkaku-ji gets 5 million visitors/year. 9AM sharp or not at all during sakura season.</strong> The golden pavilion reflected in the mirror pond with cherry blossoms around the edges — this is one of the most beautiful things you will see in Japan. Take your time in the first 20 minutes.</div>
+        </li>
+        <li>
+          <div class="time">10:15 — Ryoan-ji (Rock Garden)</div>
+          10-min walk. ¥600 ($4.10). The 15-rock Zen garden where you can only see 14 at once from any angle. 30-min visit, significantly quieter than Kinkaku-ji.
+        </li>
+        <li class="alert">
+          <div class="time">11:30 — Arashiyama</div>
+          <span class="bus">Bus 11 from Ryoanji-mae → Arashiyama 30min ¥230 ($1.55)</span> or taxi ¥1,200 ($8.15).
+          <a class="reel" href="https://www.instagram.com/reel/DQyByiOkQzJ/" target="_blank">full Arashiyama itinerary</a>
+          <a class="reel" href="https://www.instagram.com/reel/DSK1iTVgF3Y/" target="_blank">bucket list details</a><br><br>
+          → <strong>Bamboo Grove (Chikurin-no-Michi):</strong> Free. 15-min walk through towering bamboo. The sound of bamboo creaking is as impressive as the visuals. Still beautiful midday.<br>
+          → <strong>Tenryu-ji Garden:</strong> ¥500 ($3.40). Sakura in the Zen garden with Arashiyama mountain behind = one of the best composed sakura gardens in Kyoto.<br>
+          → <strong>Arashiyama riverside:</strong> Walk the Oi-gawa riverbank. Sakura trees line the water.
+        </li>
+        <li>
+          <div class="time">14:00 — Lunch</div>
+          Tofu kaiseki or soba near the river ¥1,200–2,000 ($8.15–13.60).
+        </li>
+        <li class="alert">
+          <div class="time">15:30 — Arashiyama Tenzan Onsen (天山の湯) 🛁</div>
+          Natural mineral spring, outdoor bath (rotenburo) overlooking the Oi River. ¥800 ($5.45). Towel rental ¥200 ($1.35). 45–60min soak after a morning of walking.
+          <div class="callout tip">This is the best affordable onsen in the Arashiyama area. Outdoor bath with mountain and river views in late March, cherry blossoms on the hillside. Genuinely restorative.</div>
+        </li>
+        <li>
+          <div class="time">17:30 — Return to Kyoto</div>
+          <span class="train">JR Sagano Line from Saga-Arashiyama → Kyoto Station 15min ¥240 ($1.65)</span>
+        </li>
+        <li>
+          <div class="time">19:30 — Pontocho Alley dinner</div>
+          Narrow lantern-lit alley parallel to Kamo River. Restaurants with kawayuka (river terrace) seating. ¥3,000–6,000/person ($20–41).
+        </li>
+      </ul>
+      <div class="photo-spot">📸 <strong>Kinkaku-ji reflection at 9AM</strong> (empty pool) · <strong>Bamboo grove mid-canopy shot</strong> · <strong>Tenryu-ji garden with sakura + mountains</strong></div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day open" id="day6">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--kyoto)">6</div>
+      <div>
+        <h3>Fushimi Inari Sunrise · Keage Incline · Philosopher's Path · Matcha at Ippodo</h3>
+        <div class="date">Friday, March 28</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li>
+          <div class="time">05:30</div>
+          <strong>Wake up. Most important alarm of the trip.</strong>
+        </li>
+        <li class="alert">
+          <div class="time">06:00 — Fushimi Inari Taisha at SUNRISE</div>
+          <a class="reel" href="https://www.instagram.com/reel/DU5PuuNk4jW/" target="_blank">reel</a> FREE, always open.
+          <span class="train">JR Nara Line from Kyoto Station → Inari Station 5min ¥150 ($1.00)</span>
+          Sunrise ~6:10AM late March. The main torii avenue (senbon torii) is completely empty at this hour. Thousands of cinnabar-red gates in dawn mist = the photograph. Climb 30–40min to Yotsutsuji intersection (halfway point) for panoramic Kyoto view. Back down by 8:30AM before buses start at 9AM.
+          <div class="callout warn"><strong>By 10AM thousands of visitors fill this place. Go at sunrise. Not optional if you want the iconic shot.</strong></div>
+        </li>
+        <li>
+          <div class="time">09:00 — Breakfast</div>
+          Local kissaten near Fushimi or return to central Kyoto konbini.
+        </li>
+        <li class="alert">
+          <div class="time">10:30 — Keage Incline (蹴上インクライン)</div>
+          <span class="train">Tozai Line → Keage ¥260 ($1.75)</span>
+          An old canal boat railway incline flanked by ~90 cherry trees in full bloom. FREE. One of the most beautiful and least-known sakura spots in all of Kyoto. Walk the 600m track uphill.
+          <div class="callout tip">Look back down the tracks with cherry blossom canopy arching over both rails — this is one of the most beautiful sakura compositions in Kyoto. Very few tourists know this spot. Best light is mid-morning.</div>
+          <div class="photo-spot">📸 Stand at the bottom of the Keage Incline, shoot uphill. Cherry blossoms form a tunnel over the old railway tracks fading into distance.</div>
+        </li>
+        <li>
+          <div class="time">11:15 — Nanzen-ji Temple</div>
+          5-min walk from Keage. Free grounds. The massive Sanmon gate ¥600 ($4.10) to climb. The surreal Roman-style red brick aqueduct running THROUGH the temple grounds — one of the most unexpected and photogenic structures in Kyoto. Temple garden ¥500 ($3.40).
+        </li>
+        <li class="alert">
+          <div class="time">12:30 — Philosopher's Path (哲学の道)</div>
+          <a class="reel" href="https://www.instagram.com/reel/C1-pkSZP7YY/" target="_blank">reel</a> Start at the Nanzen-ji end, walk north 1.5km along the canal lined with 500 cherry trees. The most famous sakura walk in Japan. 30–45min with stops. Cafes and galleries along the way.
+          <div class="callout tip">Walk before noon or after 4PM. Midday during peak week it gets crowded, but it's still beautiful — more intimate than Ueno Park.</div>
+        </li>
+        <li>
+          <div class="time">14:00 — Heian Shrine Garden</div>
+          Massive orange torii gate (largest in Japan), weeping cherry trees inside the garden. ¥600 ($4.10) garden entrance. One of the most composed sakura views in Kyoto.
+        </li>
+        <li>
+          <div class="time">15:30 — Ippodo Tea (一保堂茶舗)</div>
+          Founded 1717. Teramachi-Nijo, 10-min walk. THE place to buy matcha to take home.
+          <div class="callout tip"><strong>MATCHA TO TAKE HOME:</strong> Best: Ippodo Ichinomai ceremonial grade ¥2,200 ($15, 40g tin) for gifting. Tsujiri Shijo flagship for everyday drinking. Marukyu Koyamaen for professional grade. Itohkyuemon in Uji (30min from Kyoto, Kintetsu) for the widest range. Budget ¥3,000–10,000 total ($20–68). The in-store tea bar lets you taste before buying — ¥1,200 for the experience ($8.15).</div>
+        </li>
+        <li>
+          <div class="time">17:00 — Easy evening</div>
+          Okazaki area canal walk or return to hotel.
+        </li>
+      </ul>
+      <div class="photo-spot">📸 <strong>Fushimi Inari torii tunnel at sunrise</strong> (misty, empty) · <strong>Keage Incline tracks + sakura tunnel</strong> · <strong>Philosopher's Path canal + cherry reflections in water</strong> · <strong>Nanzen-ji aqueduct</strong></div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day open" id="day7">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--kyoto)">7</div>
+      <div>
+        <h3>Nara Day Trip · Todai-ji · Matcha Grinding · Hidden Villa</h3>
+        <div class="date">Saturday, March 29</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li>
+          <div class="time">08:00 — Depart Kyoto → Nara</div>
+          <span class="train">Kintetsu Ltd Express from Kintetsu-Kyoto → Kintetsu-Nara 35min ¥760 ($5.15)</span> — RECOMMENDED<br>
+          OR <span class="train">JR Nara Line → Nara 45min ¥740 ($5.05) — JR Pass covered</span>
+          <a class="reel" href="https://www.instagram.com/reel/DVx9HjCEl72/" target="_blank">7 reasons Nara deserves more than a day trip</a>
+          <a class="reel" href="https://www.instagram.com/reel/DVZA_G2jcc2/" target="_blank">what Nara offers</a>
+        </li>
+        <li class="alert">
+          <div class="time">09:00 — Nara Deer Park (奈良公園)</div>
+          Arrive early before deer are over-fed. 1,200+ wild sika deer roam freely. Deer senbei crackers ¥200 ($1.35). Sakura trees throughout the park in full bloom late March.
+          <a class="reel" href="https://www.instagram.com/reel/DR7P2FGiDGO/" target="_blank">Nara bucket list</a>
+          <div class="photo-spot">📸 Deer standing in front of sakura trees, Nara Park — frame deer in focus with blossoms bokeh behind.</div>
+        </li>
+        <li class="alert">
+          <div class="time">10:30 — Todai-ji Great Buddha</div>
+          ¥600 ($4.10). World's largest bronze Buddha (15m), world's largest wooden building. The small wooden pillar with a hole said to match the Buddha's nostril — legend: crawl through = enlightenment. Crowds build 10:30AM — arrive here by opening.
+        </li>
+        <li>
+          <div class="time">12:00 — Nakatanidou (中谷堂)</div>
+          Famous mochi shop, watch mochi pounding (mochitsuki) every 30min — extraordinary speed. Yomogi mochi ¥130 each ($0.90). Queue moves fast.
+        </li>
+        <li class="alert">
+          <div class="time">13:00 — MATCHA GRINDING EXPERIENCE</div>
+          <strong>Shizuku by Nara Yamato Chaen.</strong> A traditional matcha grinding experience — you hand-grind whole tencha leaves on a stone mill until they become matcha, then whisk and drink it. ¥1,500–2,500 ($10–17). Reservation recommended.
+          <div class="callout tip">This is what "matcha grinding" means — hand-grinding on a traditional ishiusu stone mill. You'll understand matcha completely differently after doing this. The process takes about 10min of grinding to produce a small amount of powder — it reframes why ceremonial matcha costs what it does.</div>
+        </li>
+        <li>
+          <div class="time">14:30 — Hidden Traditional Villa</div>
+          <a class="reel" href="https://www.instagram.com/reel/DTphGFPDAjA/" target="_blank">reel — "a place I almost want to keep secret"</a> Beautifully preserved traditional Yamato-style villa in Nara. Peaceful, minimal crowds. ¥800–1,200 ($5.45–8.15).
+        </li>
+        <li>
+          <div class="time">15:30 — Isuien Garden (依水園)</div>
+          If you have time — traditional garden with Todai-ji rooftop as borrowed scenery. ¥1,200 ($8.15). Less visited, stunning.
+        </li>
+        <li>
+          <div class="time">17:30 — Return Kyoto</div>
+          <span class="train">Kintetsu Nara → Kyoto 35min ¥760 ($5.15)</span>
+        </li>
+        <li>
+          <div class="time">19:30 — Dinner</div>
+          Gogyo Kyoto (burnt miso ramen, uniquely Kyoto) or Kyoto-style cuisine.
+        </li>
+      </ul>
+      <div class="callout">
+        <strong>MUROU ART FOREST:</strong> You saved this twice (<a class="reel" href="https://www.instagram.com/reel/C8SNQKevxDz/" target="_blank">reel 1</a> <a class="reel" href="https://www.instagram.com/reel/C8d2ivCS7_v/" target="_blank">reel 2</a>). It's spectacular but 1.5hrs from Nara by bus (Kintetsu to Murouguchi-Ono → bus ¥550). Adding it today would be a rush. <strong>BEST APPROACH:</strong> Do it as a standalone morning from Kyoto OR Nara on a day you have fewer commitments. It deserves focused time.
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 8 -->
+  <div class="day open" id="day8">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--kyoto)">8</div>
+      <div>
+        <h3>Amanohashidate · Tango Railway · Sea of Kyoto</h3>
+        <div class="date">Sunday, March 30</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="alert">
+          <div class="time">07:30 — Depart Kyoto Station</div>
+          <span class="train">Ltd Express Hashidate from Kyoto → Amanohashidate ~2hrs ¥4,500 ($30.60) — partial JR Pass, pay ¥2,300/$15.65 for Kyoto Tango Railway portion separately</span>
+          <a class="reel" href="https://www.instagram.com/reel/DVRrFRxkk7p/" target="_blank">DON'T SKIP this place</a>
+          <a class="reel" href="https://www.instagram.com/reel/DT6UuzFCJCT/" target="_blank">Tango Railway coastal footage</a>
+          <div class="callout warn">Buy the <strong>Tango Railway 1-day free pass ¥2,300 ($15.65)</strong> at Kyoto Station — covers all Tango Railway segments today.</div>
+        </li>
+        <li>
+          <div class="time">09:45 — Arrive Amanohashidate</div>
+          "Bridge in Heaven." A 3.6km pine-covered sand spit across Miyazu Bay. One of Japan's three classic scenic views.
+        </li>
+        <li class="alert">
+          <div class="time">10:15 — Amanohashidate Viewland</div>
+          Cable car/chairlift ¥850 ($5.80) round trip. The famous "matanozoki" — bend over and look between your legs — the sand spit appears to float in the sky. Also panoramic sakura hillside views in late March.
+        </li>
+        <li>
+          <div class="time">11:30 — Walk the Sand Spit</div>
+          Free. Bicycle rental ¥500/2hrs ($3.40). Pine forest with sea on both sides. Completely unique landscape. 3.6km one-way.
+        </li>
+        <li>
+          <div class="time">13:00 — Ine Funaya (optional, 30min bus)</div>
+          Traditional fishermen's boathouses built over the water. Some are now cafes/guesthouses. Japan's most unusual coastal village. Skip if tired.
+        </li>
+        <li>
+          <div class="time">14:30 — Return via Tango Railway</div>
+          Coastal route home with Sea of Japan views. Windows on both sides, dramatic coastline.
+        </li>
+        <li>
+          <div class="time">17:30 — Back in Kyoto</div>
+        </li>
+        <li>
+          <div class="time">19:00 — Optional evening</div>
+          <a class="reel" href="https://www.instagram.com/reel/DPWfmAUD0mZ/" target="_blank">Kyo-train Garaku</a> — scenic Kyoto-Osaka train for a scenic evening ride to Osaka for dinner and back.
+        </li>
+      </ul>
+      <div class="photo-spot">📸 <strong>Amanohashidate from viewland</strong> (matanozoki + standard panorama) · <strong>Tango Railway window shot</strong> (coastline)</div>
+    </div>
+  </div>
+
+  <!-- DAY 9 -->
+  <div class="day open" id="day9">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--kyoto)">9</div>
+      <div>
+        <h3>Higashiyama at Dawn · Osaka Day Trip</h3>
+        <div class="date">Monday, March 31</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="alert">
+          <div class="time">06:30 — Higashiyama Walking District (DAWN ONLY)</div>
+          <span class="bus">Bus 206 → Higashiyama-Yasui ¥230 ($1.55)</span>
+          <div class="callout">
+            <strong>IS HIGASHIYAMA WORTH IT? HONEST ANSWER: YES — but ONLY at dawn.</strong><br>
+            ✅ <strong>DO at 6:30–8:30AM:</strong> Maruyama Park giant weeping Gion Shidare sakura (one of Japan's most famous sakura trees, 100+ years old), Yasaka Shrine gate at sunrise, Sannen-zaka/Ninnen-zaka cobblestone streets with lanterns and zero people.<br>
+            ❌ <strong>AVOID:</strong> 10AM–5PM during peak sakura week. It becomes shoulder-to-shoulder.<br>
+            <strong>KIYOMIZUDERA:</strong> Opens 6AM. Gorgeous wood stage view. Go before 8:30AM or skip — by 9AM the crowds are there. Entrance ¥500 ($3.40).<br>
+            <strong>VERDICT:</strong> This place is genuinely beautiful and worth 2 hours at dawn. The Maruyama Park weeping sakura alone justifies the early alarm. Use afternoon for Osaka instead of spending the whole day in Higashiyama crowds.
+          </div>
+        </li>
+        <li>
+          <div class="time">07:00 — Maruyama Park</div>
+          The Gion Shidare weeping sakura. This is one of Japan's most iconic sakura trees. It's also illuminated at night — if you're near Gion any evening, come back. <strong>Free.</strong>
+        </li>
+        <li>
+          <div class="time">07:30 — Yasaka Shrine</div>
+          Walk through torii gate at dawn. Shrine lanterns still lit.
+        </li>
+        <li>
+          <div class="time">07:45 — Sannen-zaka + Ninnen-zaka</div>
+          Cobblestone streets with traditional shops and lanterns. Completely empty at 7:45AM. Walk slowly.
+        </li>
+        <li>
+          <div class="time">08:30 — Kagizen Yoshifusa (opens 9AM)</div>
+          Oldest Kyoto confectionery (1711). Kuzu kiri noodles in sweet syrup ¥1,100 ($7.50). Worth opening wait.
+        </li>
+        <li>
+          <div class="time">10:00 — Shinkaisoku to Osaka</div>
+          <span class="train">JR Shinkaisoku Kyoto → Osaka 28min ¥560 ($3.80) — JR Pass covered</span>
+          OR <span class="train">Shinkansen Nozomi → Shin-Osaka 15min ¥1,490 ($10.15) — JR Pass</span>
+        </li>
+        <li>
+          <div class="time">11:00 — Kuromon Ichiba (黒門市場)</div>
+          Osaka's kitchen. Walk and eat: fresh tuna sashimi stick ¥500, wagyu skewer ¥800, oysters ¥300.
+          <a class="reel" href="https://www.instagram.com/reel/DR2WT0PDL76/" target="_blank">Kuromon reel</a>
+        </li>
+        <li>
+          <div class="time">13:00 — Dotonbori</div>
+          The neon canal. Glico Running Man. Takoyaki at original Creo-ru ¥600/8pc. Ramen at Ichiran (private booth, very Japanese experience, ¥1,000). Custard cream pie at Grenier <a class="reel" href="https://www.instagram.com/reel/DU5gDraEnJe/" target="_blank">reel</a>.
+        </li>
+        <li>
+          <div class="time">15:00 — Shinsekai</div>
+          1950s retro neighborhood. Kushikatsu deep-fried skewers (NO double dipping the sauce). ¥1,500 for a full set.
+        </li>
+        <li>
+          <div class="time">17:30 — Return Kyoto</div>
+          <span class="train">JR Shinkaisoku → Kyoto 28min ¥560 ($3.80) — JR Pass</span>
+        </li>
+        <li>
+          <div class="time">19:30 — Last Kyoto evening</div>
+          Sake tasting in Fushimi (Kyoto's sake district, 5 stops south on Kintetsu), or Kamo River bench sitting with convenience store beers — locals do this constantly.
+        </li>
+      </ul>
+      <div class="callout tip">
+        <strong>TONIGHT:</strong> Arrange luggage delivery to Tokyo at the front desk. ¥1,200/bag ($8.15). Bags arrive at your Tokyo hotel by 6PM tomorrow.
+      </div>
+      <div class="photo-spot">📸 <strong>Maruyama Park weeping sakura at dawn</strong> · <strong>Sannen-zaka cobblestone at 7:45AM</strong> (empty) · <strong>Dotonbori canal at night</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BACK TO TOKYO ===================== -->
+<section id="back-tokyo">
+  <div class="region-header">
+    <span class="badge" style="background:var(--tokyo)">TOKYO</span>
+    <h2>Back to Tokyo — 2 Nights</h2>
+    <span class="nights">Apr 1–2 · Final stretch</span>
+  </div>
+
+  <!-- DAY 10 -->
+  <div class="day open" id="day10">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--tokyo)">10</div>
+      <div>
+        <h3>Kurama Mountain Onsen 🛁 · Shinkansen to Tokyo</h3>
+        <div class="date">Tuesday, April 1</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="alert">
+          <div class="time">07:00 — Kurama Onsen (鞍馬温泉)</div>
+          <span class="train">Eizan Railway from Demachiyanagi → Kurama 30min ¥430 ($2.95)</span>
+          A mountain village north of Kyoto. Ancient cedar forest, wild mountain atmosphere. Kurama-dera temple is a 30-min uphill hike from the village.
+          <div class="callout tip"><strong>Kurama Onsen ¥1,000 ($6.80)</strong> outdoor sulfur spring rotenburo. Surrounded by giant cedar forest in early April with mountain sakura still blooming. One of the most atmospheric onsen experiences in the Kyoto area — and essentially undiscovered by tourists compared to Arashiyama. Towel rental ¥200 ($1.35).</div>
+          <div class="callout tip"><strong>Three Kyoto onsen in this itinerary at different levels:</strong> Tenzan (Arashiyama, river views, Day 5) · Kurama (mountain forest, Day 10) · Shima Onsen optional (Spirited Away overnight, Day 3 variant). Each completely different.</div>
+        </li>
+        <li>
+          <div class="time">10:00 — Return to Kyoto</div>
+          <span class="train">Eizan → Demachiyanagi ¥430 ($2.95)</span>
+        </li>
+        <li>
+          <div class="time">10:30 — Check out. Last Kyoto browse</div>
+          → Nijo Castle moat (sakura-lined moat, different atmosphere from temples, ¥1,000/$6.80)<br>
+          → OR Nishiki Market final food souvenir run: matcha Kit Kats, tsukemono pickles, yatsuhashi (Kyoto cinnamon mochi, ¥800/$5.45 box).
+        </li>
+        <li class="alert">
+          <div class="time">13:00 — Shinkansen to Tokyo</div>
+          Luggage already sent. <span class="train">Nozomi from Kyoto → Tokyo 2hr 15min ¥13,850 ($94.20) — JR Pass</span>
+          Right side window for Fuji (~14:15 mark if taking 12:30 train).
+        </li>
+        <li>
+          <div class="time">16:00 — Arrive Tokyo. Check in.</div>
+        </li>
+        <li>
+          <div class="time">17:30 — Optional Kamakura</div>
+          <a class="reel" href="https://www.instagram.com/reel/DOn1pMeiTnt/" target="_blank">Kamakura reel</a>
+          <div class="callout">Arriving 5:30PM leaves 30min before most Kamakura temples close. The Great Buddha is visible from outside after closing. Worth it only if you have energy. Otherwise: rest, Shinjuku dinner, set alarm for 5AM tomorrow.</div>
+        </li>
+      </ul>
+      <div class="callout warn">
+        <strong>SET ALARM FOR 5AM.</strong> Tomorrow is Mt. Fuji day — early Shinjuku departure is essential for best conditions.
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 11 -->
+  <div class="day open" id="day11">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-number" style="background:var(--tokyo)">11</div>
+      <div>
+        <h3>Mt. Fuji · Arakurayama Sengen Park · Kawaguchiko · Bar Centifolia</h3>
+        <div class="date">Wednesday, April 2</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="alert">
+          <div class="time">05:30 — Depart Shinjuku</div>
+          <span class="train">Fuji Excursion Ltd Express from Shinjuku → Kawaguchiko 1hr 47min ¥2,600 ($17.70) — NOT covered by JR Pass</span>
+          Book reserved seat the day before at any JR ticket window or ekinet.com — popular train, fills up.
+        </li>
+        <li class="alert">
+          <div class="time">07:30 — Arrive Kawaguchiko</div>
+          Lake at this hour = glass-still.
+          <a class="reel" href="https://www.instagram.com/reel/C7pN5VKvcek/" target="_blank">why the lake beats the Lawson</a>
+          <a class="reel" href="https://www.instagram.com/reel/DPGZUm2EXCn/" target="_blank">photo spots</a>
+          <a class="reel" href="https://www.instagram.com/reel/DVeBPWLEcJq/" target="_blank">8 secret Fuji photo spots</a>
+        </li>
+        <li class="alert">
+          <div class="time">08:00 — Kawaguchiko North Shore Walk</div>
+          If Fuji is clear (check Fujisan Webcam app night before), this is among the great views in Japan. Sakura trees line the north shore in early April — Fuji + pink blossoms + lake reflection = one composition.
+          <a class="reel" href="https://www.instagram.com/reel/C1L9SJuLqnM/" target="_blank">all Fuji photo spots</a>
+          <div class="photo-spot">📸 North shore, stand with lake in foreground, sakura in middle ground, Fuji rising behind. Best at 7:30–9:00AM before clouds build.</div>
+        </li>
+        <li class="alert">
+          <div class="time">09:30 — Arakurayama Sengen Park (新倉山浅間公園)</div>
+          <a class="reel" href="https://www.instagram.com/reel/DS9Si9TCbbF/" target="_blank">reel — "THE best view in 2026"</a> ¥500 ($3.40). 398 stone steps to Chureito Pagoda. The composition: red five-story pagoda + sakura trees + Mt. Fuji centered behind = the Japan postcard shot.
+          <span class="bus">Fujikyu bus from Kawaguchiko Station → Shimo-Yoshida ¥200 ($1.35)</span> or taxi ¥800 ($5.45).
+          <div class="photo-spot">📸 Stand on the pagoda viewing platform. Pagoda in left foreground, sakura in mid-ground, Fuji dead center. Shoot at f/8 to keep both pagoda and mountain in focus. This is the most photographed composition in Japan during sakura season — arrive before 10AM.</div>
+          <div class="callout warn"><strong>ARRIVE AT ARAKURAYAMA BY 9:30AM.</strong> After 10AM, tour buses fill the stairs. The staircase itself (398 steps) is a 15-min climb — factor this in.</div>
+        </li>
+        <li>
+          <div class="time">11:30 — Oishi Park</div>
+          Free. Different angle of Fuji, wider lens composition. Good backup if clouds roll in.
+        </li>
+        <li>
+          <div class="time">12:30 — Lunch with Fuji view</div>
+          Fujiyama Curry (¥1,200, Fuji-shaped bowl) or pancakes with Fuji view. <a class="reel" href="https://www.instagram.com/reel/DUURa6eD9_M/" target="_blank">pancake spot reel</a>
+        </li>
+        <li>
+          <div class="time">14:30 — Return Shinjuku</div>
+          <span class="train">Fuji Excursion → Shinjuku 1hr 47min ¥2,600 ($17.70)</span>
+        </li>
+        <li>
+          <div class="time">16:30 — Arrive Tokyo. Shower. Rest.</div>
+        </li>
+        <li>
+          <div class="time">18:00 — Shopping run (if needed)</div>
+          Don Quijote Shinjuku (24hr), any final omiyage.
+          <a class="reel" href="https://www.instagram.com/reel/DFFhfHnz_1G/" target="_blank">wallet warning</a>
+          <a class="reel" href="https://www.instagram.com/reel/DVEV-aOj4L4/" target="_blank">shopping guide</a>
+          <a class="reel" href="https://www.instagram.com/reel/DUsqMYLjc5M/" target="_blank">shopping list</a>
+        </li>
+        <li class="alert">
+          <div class="time">20:30 — Bar Centifolia</div>
+          <a class="reel" href="https://www.instagram.com/reel/DDDDqUEIJpE/" target="_blank">reel — "could this be the best bar in the world?"</a> Email reservation 2–3 weeks ahead. Limited seats, 2 seatings/night. Extraordinary cocktails, curated experience. ¥10,000–15,000/person ($68–102).
+          <div class="callout tip">This is your last night in Japan. Email them now if you haven't already. The experience justifies the cost.</div>
+        </li>
+      </ul>
+      <div class="photo-spot">📸 <strong>Kawaguchiko north shore</strong> (Fuji + sakura + reflection at 7:30AM) · <strong>Arakurayama Sengen pagoda</strong> (THE Japan postcard) · <strong>Oishi Park wide panorama</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DEPARTURE ===================== -->
+<section id="departure">
+  <div class="region-header">
+    <span class="badge" style="background:var(--gold)">DEPARTURE</span>
+    <h2>Departure — Day 12</h2>
+    <span class="nights">Thursday Apr 3 · Depart 17:45</span>
+  </div>
+
+  <!-- DAY 12 -->
+  <div class="day open" id="day12">
+    <div class="day-header" onclick="toggle(this)" style="background:var(--gold); color:white;">
+      <div class="day-number" style="background:rgba(0,0,0,0.2)">12</div>
+      <div>
+        <h3 style="color:white;">Last Morning Tokyo · Haneda Departure 17:45</h3>
+        <div class="date" style="color:rgba(255,255,255,0.75);">Thursday, April 3</div>
+      </div>
+      <span class="chevron" style="color:rgba(255,255,255,0.75);">▼</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li>
+          <div class="time">08:00 — Final breakfast</div>
+          Konbini onigiri + hot matcha, standing at the counter like a local. ¥350–500 ($2.40–3.40).
+          <a class="reel" href="https://www.instagram.com/reel/DTxRX6mjHEu/" target="_blank">konbini navigation</a>
+        </li>
+        <li class="alert">
+          <div class="time">09:00–12:00 — FINAL SHOPPING (3 hours)</div>
+          <a class="reel" href="https://www.instagram.com/reel/DVEV-aOj4L4/" target="_blank">Tokyo Shopping Guide</a>
+          <a class="reel" href="https://www.instagram.com/reel/DUsqMYLjc5M/" target="_blank">Japan shopping list</a><br>
+          → Don Quijote: snacks, beauty, last-minute everything<br>
+          → Harajuku / Takeshita Street: fashion<br>
+          → Any remaining omiyage
+          <div class="callout tip"><strong>SKINCARE:</strong> <a class="reel" href="https://www.instagram.com/reel/DPeGHYDD8vn/" target="_blank">specific product reel</a> — costs 60–70% less than abroad. Buy here.</div>
+          <div class="callout tip"><strong>STATIONERY:</strong> <a class="reel" href="https://www.instagram.com/reel/DVlSNVajMXs/" target="_blank">2026 Japan Stationery Award winners</a> — if you're going back to Itoya.</div>
+        </li>
+        <li>
+          <div class="time">12:00 — Check out</div>
+          Coin locker at Shinjuku Station ¥500/day ($3.40) if needed.
+        </li>
+        <li class="alert">
+          <div class="time">13:00 — Head to Haneda</div>
+          Option A (recommended): <span class="train">Yamanote → Shinagawa → Keikyu Line → HND 15min ¥330 ($2.25) — FASTEST</span><br>
+          Option B: <span class="train">Yamanote → Hamamatsucho → Tokyo Monorail → HND 15min ¥500 ($3.40)</span>
+        </li>
+        <li>
+          <div class="time">15:15 — Arrive HND</div>
+          Check in, security, duty free. Allow 2.5hrs before departure.<br>
+          → Duty free: regional Kit Kats, matcha chocolate, sake sets<br>
+          → Last matcha soft cream at the terminal ¥400 ($2.70)
+        </li>
+        <li>
+          <div class="time">17:45 — Depart HND</div>
+          <a class="reel" href="https://www.instagram.com/reel/DF9Gir-vCzP/" target="_blank">window seat reel</a> — Mt. Fuji visible ~10min after takeoff (right side heading east or left side heading west depending on route). A perfect goodbye.
+        </li>
+      </ul>
+      <div class="callout tip">
+        <strong>WHAT TO BRING HOME:</strong> Ippodo matcha (Kyoto, ¥2,200 tin) · Marukyu Koyamaen matcha (professional grade) · Japanese kitchen knife from Kappabashi (¥5,000–15,000) · Onitsuka Tiger or Takeo Kikuchi fashion · Regional Kit Kats (sake, uji matcha, strawberry) · <a class="reel" href="https://www.instagram.com/reel/DPeGHYDD8vn/" target="_blank">Skincare reel</a> · Japanese stationery (Itoya) · Yatsuhashi Kyoto mochi
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REFERENCE TABLES ===================== -->
+<section id="trains" class="ref-section">
+  <h2>Trains &amp; Key Costs</h2>
+
+  <h3 style="font-size:1em; color:var(--text-light); font-family:sans-serif; font-weight:500; margin: 20px 0 8px;">Major Transport</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Route</th><th>Train</th><th>Duration</th><th>¥</th><th>USD</th><th>JR Pass?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>HND → Shinagawa</td><td>Keikyu Line</td><td>15 min</td><td class="yen">¥330</td><td class="usd">$2.25</td><td>No</td></tr>
+        <tr><td>HND → Hamamatsucho</td><td>Tokyo Monorail</td><td>15 min</td><td class="yen">¥500</td><td class="usd">$3.40</td><td>Yes</td></tr>
+        <tr><td>Tokyo → Kawaguchiko</td><td>Fuji Excursion</td><td>1h 47m</td><td class="yen">¥2,600</td><td class="usd">$17.70</td><td>No</td></tr>
+        <tr><td><strong>Tokyo → Kyoto</strong></td><td>Nozomi Shinkansen</td><td>2h 15m</td><td class="yen">¥13,850</td><td class="usd">$94.20</td><td><strong>Yes (save ¥27,700 round trip)</strong></td></tr>
+        <tr><td>Kyoto → Osaka</td><td>JR Shinkaisoku</td><td>28 min</td><td class="yen">¥560</td><td class="usd">$3.80</td><td>Yes</td></tr>
+        <tr><td>Kyoto → Nara (Kintetsu)</td><td>Kintetsu Express</td><td>35 min</td><td class="yen">¥760</td><td class="usd">$5.15</td><td>No</td></tr>
+        <tr><td>Kyoto → Amanohashidate</td><td>Ltd Exp Hashidate</td><td>2h 00m</td><td class="yen">¥4,500</td><td class="usd">$30.60</td><td>Partial</td></tr>
+        <tr><td>Demachiyanagi → Kurama</td><td>Eizan Railway</td><td>30 min</td><td class="yen">¥430</td><td class="usd">$2.95</td><td>No</td></tr>
+        <tr><td>Kyoto → Fushimi Inari</td><td>JR Nara Line</td><td>5 min</td><td class="yen">¥150</td><td class="usd">$1.00</td><td>Yes</td></tr>
+        <tr><td>Within Tokyo (Yamanote)</td><td>JR Yamanote</td><td>varies</td><td class="yen">¥170–210</td><td class="usd">$1.15–1.45</td><td>Yes</td></tr>
+        <tr><td>Shinjuku → Shima Onsen (optional)</td><td>Shinkansen+bus</td><td>~3h</td><td class="yen">¥3,500</td><td class="usd">$23.80</td><td>Partial</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:1em; color:var(--text-light); font-family:sans-serif; font-weight:500; margin: 28px 0 8px;">Entrance Fees &amp; Crowd Levels</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Attraction</th><th>¥</th><th>USD</th><th>Crowd Level</th><th>Best Time</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Kinkaku-ji</td><td class="yen">¥500</td><td class="usd">$3.40</td><td>★★★★★</td><td>9:00 AM sharp</td></tr>
+        <tr><td>Fushimi Inari</td><td class="yen">Free</td><td class="usd">$0</td><td>★★★★☆</td><td>Before 7 AM</td></tr>
+        <tr><td>Arashiyama Bamboo</td><td class="yen">Free</td><td class="usd">$0</td><td>★★★★☆</td><td>Before 9 AM</td></tr>
+        <tr><td>Keage Incline</td><td class="yen">Free</td><td class="usd">$0</td><td>★★☆☆☆</td><td>Mid-morning</td></tr>
+        <tr><td>Philosopher's Path</td><td class="yen">Free</td><td class="usd">$0</td><td>★★★☆☆</td><td>Before noon / after 4PM</td></tr>
+        <tr><td>Nanzen-ji grounds</td><td class="yen">Free</td><td class="usd">$0</td><td>★★★☆☆</td><td>Morning</td></tr>
+        <tr><td>Todai-ji (Nara)</td><td class="yen">¥600</td><td class="usd">$4.10</td><td>★★★★☆</td><td>9–10 AM</td></tr>
+        <tr><td>Arakurayama Sengen Park</td><td class="yen">¥500</td><td class="usd">$3.40</td><td>★★★★★</td><td>Before 10 AM</td></tr>
+        <tr><td>Heian Shrine Garden</td><td class="yen">¥600</td><td class="usd">$4.10</td><td>★★★☆☆</td><td>Afternoon</td></tr>
+        <tr><td>Tenryu-ji</td><td class="yen">¥500</td><td class="usd">$3.40</td><td>★★★☆☆</td><td>Morning</td></tr>
+        <tr><td>Chidorigafuchi (Tokyo)</td><td class="yen">Free</td><td class="usd">$0</td><td>★★★★☆</td><td>Sunset + night</td></tr>
+        <tr><td>Higashiyama (Maruyama)</td><td class="yen">Free</td><td class="usd">$0</td><td>★★★★★</td><td>Before 8 AM only</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:1em; color:var(--text-light); font-family:sans-serif; font-weight:500; margin: 28px 0 8px;">Onsen Summary 🛁</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Onsen</th><th>Location</th><th>Type</th><th>Cost</th><th>Best For</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Arashiyama Tenzan</td><td>Arashiyama, Kyoto</td><td>Outdoor river view</td><td class="usd">¥800 ($5.45)</td><td>Day 5 afternoon soak</td></tr>
+        <tr><td>Kurama Onsen</td><td>North Kyoto mountains</td><td>Outdoor forest rotenburo</td><td class="usd">¥1,000 ($6.80)</td><td>Day 10 morning</td></tr>
+        <tr><td>Sekizenkan (Spirited Away)</td><td>Shima Onsen, Gunma</td><td>Full ryokan overnight</td><td class="usd">¥20,000+ ($136+)</td><td>Day 3 optional detour</td></tr>
+        <tr><td>Yunessun</td><td>Hakone</td><td>Resort theme park</td><td class="usd">¥2,500 ($17)</td><td>Alternative Fuji day route</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:1em; color:var(--text-light); font-family:sans-serif; font-weight:500; margin: 28px 0 8px;">Matcha Guide 🍵</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Shop</th><th>City</th><th>Best For</th><th>Price Range</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Ippodo Tea</strong></td><td>Kyoto (Teramachi-Nijo)</td><td>Take-home ceremonial grade</td><td class="usd">¥1,500–5,000</td><td>Founded 1717, the benchmark</td></tr>
+        <tr><td>Tsujiri</td><td>Kyoto (Shijo flagship)</td><td>Everyday drinking + desserts</td><td class="usd">¥800–3,000</td><td>Great matcha parfait</td></tr>
+        <tr><td>Marukyu Koyamaen</td><td>Uji / Kyoto</td><td>Professional grade</td><td class="usd">¥3,000–8,000</td><td>Used by wagashi professionals</td></tr>
+        <tr><td>Itohkyuemon</td><td>Uji (30min from Kyoto)</td><td>Full matcha experience + gifts</td><td class="usd">¥1,000–5,000</td><td>Huge range, best gifts</td></tr>
+        <tr><td>Shizuku by Yamato Chaen</td><td>Nara</td><td>Grinding experience</td><td class="usd">¥1,500–2,500</td><td>Hands-on stone mill matcha</td></tr>
+        <tr><td>Nakamura Tokichi</td><td>Uji</td><td>Historic experience</td><td class="usd">¥1,200–4,000</td><td>Beautiful old townhouse setting</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== SAKURA TIMING ===================== -->
+<section id="timing" class="ref-section">
+  <h2>Sakura Forecast &amp; Timing Guide 🌸</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Tokyo</th><th>Kyoto</th><th>Nara</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Mar 23–24</td><td>🌸 60–70%</td><td>🌸 50–60%</td><td>🌸 50%</td><td>Ueno and Chidorigafuchi starting</td></tr>
+        <tr><td>Mar 25–26</td><td>🌸🌸 80%</td><td>🌸🌸 70%</td><td>🌸 65%</td><td>Tokyo near peak, Kyoto building</td></tr>
+        <tr><td>Mar 27–29</td><td>🍃 Petals falling</td><td>🌸🌸🌸 <strong>PEAK</strong></td><td>🌸🌸🌸 <strong>PEAK</strong></td><td>Best Kyoto window, Nara peak</td></tr>
+        <tr><td>Mar 30–31</td><td>🍃 Past peak</td><td>🌸🌸🌸 <strong>PEAK</strong></td><td>🌸🌸 Late peak</td><td>Still excellent Kyoto/Nara</td></tr>
+        <tr><td>Apr 1–2</td><td>🍃 Green</td><td>🌸🌸 Late</td><td>🌸 Fading</td><td>Mountain areas (Fuji, Kurama) still blooming</td></tr>
+        <tr><td>Apr 3</td><td>🍃</td><td>🌸 Last petals</td><td>—</td><td>Hanami season ending</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    Sakura forecast varies by up to 2 weeks year-to-year. Check <strong>japan-guide.com/sakura</strong> or <strong>Weathernews Sakura Forecast app</strong> closer to travel. Late March arrivals typically hit Tokyo just past peak and Kyoto at perfect peak — this itinerary is timed well.
+  </div>
+
+  <div class="callout tip">
+    <strong>NIGHT SAKURA (YOZAKURA 夜桜) — don't skip it.</strong> Best spots illuminated:<br>
+    · Chidorigafuchi Tokyo (until 22:00, rowboats under lit blossoms)<br>
+    · Maruyama Park Kyoto (Gion Shidare weeping tree illuminated)<br>
+    · Philosopher's Path evening walk<br>
+    <a class="reel" href="https://www.instagram.com/reel/DVvl5ZagS6m/" target="_blank">night sakura spots reel</a>
+  </div>
+
+  <div class="callout">
+    <strong>USEFUL JAPANESE PHRASES:</strong>
+    <a class="reel" href="https://www.instagram.com/reel/DP4mc5rkUQk/" target="_blank">say this and make Japanese people smile</a>
+    <a class="reel" href="https://www.instagram.com/reel/DVwb19UT9iM/" target="_blank">izakaya dining phrases</a><br>
+    "Sumimasen" (すみません) — excuse me / to get attention<br>
+    "Kore wo kudasai" (これをください) — I'll have this one please<br>
+    "Ikura desu ka?" (いくらですか？) — How much is it?<br>
+    "Oishii!" (おいしい！) — Delicious!
+  </div>
+</section>
+
+</main>
+
+<div class="footer-legend">
+  🌸 Sakura moment &nbsp;·&nbsp; 🚆 Train &nbsp;·&nbsp; ▶ Saved reel &nbsp;·&nbsp; ★ Personal tip &nbsp;·&nbsp; 📸 Photo spot &nbsp;·&nbsp; 🛁 Onsen
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨 Print</button>
+
+<script>
+  function toggle(header) {
+    const day = header.parentElement;
+    day.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
